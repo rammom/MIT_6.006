@@ -1,0 +1,46 @@
+
+HEAPS AND HEAP SORT
+===================
+
+What motivated the heap data structure?
+
+Priority Queue:
+	- Implements a set S of elements, each element is associated with a key
+	- What set of operations would we want to perform?
+		- insert(S, x): insert element x into S
+		- max(S): return element of S with the largest key
+		- extract_max(S): max(S) + removes element with largest key
+		- increase_key(S, x, k): increase the level of x's key to new value k
+
+Heap:
+	- An array visualised as a nearly complete binary tree
+
+Heap as a Tree:
+	- Root = first element
+	- parent(i) = 1 / 2
+	- left(i) = 2i
+	- right(i) = 2i + 1
+
+Max-Heap Property:
+	- The key of a node is >= the keys of it's children
+
+Heap Operations:
+	- build_max_heap:
+		- produces a max heap from an unsorted array
+		- build_max_heap(A):
+			for i = n / 2 downto 1
+				do max_heapify(A, i)
+		
+	- max_heapify:
+		- correct a single violation of the heap property in a subtree's root
+		- assume that the tree is rooted at left(i) and right(i) are max heaps
+		- O(lg(n))
+		
+	- heap_sort:
+		- Build the max-heap
+		- Find max element A[1]
+		- Swap elements A[n] with A[1], now max element is at end of array
+		- Discard node n from heap, decrementing heap size
+		- New root may violate max heap property, but children are max heaps (max_heapify)
+		- Repeat from step 2
+
